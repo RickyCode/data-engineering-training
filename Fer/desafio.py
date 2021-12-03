@@ -1,7 +1,7 @@
 import boto3
 import json
 import csv
-
+##Leer un archivo en un bucket de S3
 key='datalake/ingestion-layer/raw-zone/fer/2021-11-18-challange/pokemonesKanto.csv'
 bucket ='data-engineering-training'
 def lambda_handler(event,context):
