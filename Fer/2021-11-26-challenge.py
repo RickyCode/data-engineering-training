@@ -1,5 +1,9 @@
 import json
 import boto3
+import csv
+import pandas as df
+import io
+import awswrangler as wr
 
 
 
@@ -18,9 +22,14 @@ def lambda_handler(event,context):
     ##Leyendo el json
     s3= boto3.resource('s3')
     content_object=s3.Object(bucket,keyjson)
-    file_content = content_object.get()['Body'].read().decode('utf-8').split()
-
+    file_content = content_object.get()['Body'].read().decode('utf-8')
     print(file_content)
     
-  
+    ##Leyendo Parquet
+    ##archivoParquet=df.read_parquet('s3://'+bucket+'/'+keyparquet)
+    ##print(archivoParquet.head())
+    
+    df = wr.s3.read_parquet(path='s3://'+bucket+'/'+keyparquet)
+    print(df.head())
+   
    
