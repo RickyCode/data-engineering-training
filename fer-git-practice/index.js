@@ -9,6 +9,6 @@ function suma(a, b) {
         return "son iguales"
     }
 
-    
+
   
 }
