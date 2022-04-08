@@ -23,8 +23,7 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - install-pytest
       - test:
           requires:
             - build
-            - install-pytest
+            
