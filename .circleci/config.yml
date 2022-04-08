@@ -9,20 +9,28 @@ jobs:
       - checkout
       - run: python3 classes-content/2022-04-08-deployments/example_module.py
 
+  install-pytest:
+    working_directory: ~/circleci-python
+    docker:
+      - image: "circleci/python:3.6.4"
+    steps:
+      - checkout
+      - run: pip3 install pytest
+
   test:
     working_directory: ~/circleci-python
     docker:
       - image: "circleci/python:3.6.4"
     steps:
       - checkout
-      - run: |
-          pip3 install pytest
-          cd classes-content/2022-04-08-Deployments && pytest tests
+      - run: cd classes-content/2022-04-08-Deployments && pytest tests
 
 workflows:
   build_and_test:
     jobs:
       - build
+      - install-pytest
       - test:
           requires:
             - build
+            - install-pytest
