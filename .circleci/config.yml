@@ -16,8 +16,8 @@ jobs:
     steps:
       - checkout
       - run: |
-        pip3 install pytests
-        cd classes-content/2022-04-08-Deployments && pytest tests
+          pip3 install pytest
+          cd classes-content/2022-04-08-Deployments && pytest tests
 
 workflows:
   build_and_test:
