@@ -23,7 +23,7 @@ jobs:
       - image: "circleci/python:3.6.4"
     steps:
       - checkout
-      - run: cd classes-content/2022-04-08-Deployments && pytest tests
+      - run: ls && cd classes-content/2022-04-08-Deployments && pytest tests
 
 workflows:
   build_and_test:
