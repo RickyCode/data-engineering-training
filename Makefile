@@ -6,7 +6,7 @@ hello:
 
 
 run-tests:
-	cd classes-content/2022-04-08-Deployments && pytest tests
+	pytest classes-content/class_2022_04_08_deployments/tests
 
 
 send-file-to-aws:
