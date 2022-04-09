@@ -17,7 +17,8 @@ jobs:
       - checkout
       - run: |
           pip3 install pytest --upgrade --user
-          ls && cd classes-content/2022-04-08-deployments && pytest tests
+          pytest classes-content/2022-04-08-deployments/ tests
+
 
 workflows:
   build_and_test:
@@ -26,4 +27,3 @@ workflows:
       - test:
           requires:
             - build
-            
