@@ -19,6 +19,9 @@ def test_add():
 def test_substract():
     assert substract(8,3) == 5
 
+def bla():
+    assert True
+
 print('yuhuu')
 
 
