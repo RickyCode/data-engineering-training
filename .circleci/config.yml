@@ -21,6 +21,34 @@ jobs:
           pip3 install pytest --upgrade --user
           pytest classes-content/class_2022_04_08_deployments/tests
 
+  # pre-commit:
+  #   working_directory: ~/circleci-python
+  #   docker:
+  #     - image: "cimg/python:3.9.6"
+  #   steps:
+  #     - checkout
+  #     - run: |
+  #         pip install pre-commit --upgrade --user
+  #         pytest classes-content/class_2022_04_08_deployments/tests
+
+  pre-commit:
+    working_directory: ~/circleci-python
+    docker:
+      - image: "cimg/python:3.9.6"
+    steps:
+      - checkout
+      # - run:
+      #     name: Install dependencies
+      #     command: pip install --user -r requirements.txt
+      - run:
+          name: Install pre-commit
+          command: pip install pre-commit --upgrade --user
+      - run:
+          name: Check pre-commit
+          command: |
+            SKIP=no-commit-to-branch pre-commit run -a -v
+
+
 workflows:
   build_and_test:
     jobs:
@@ -28,4 +56,7 @@ workflows:
       - test:
           requires:
             - build
+      - pre-commit:
+          requires:
+            - test
             
