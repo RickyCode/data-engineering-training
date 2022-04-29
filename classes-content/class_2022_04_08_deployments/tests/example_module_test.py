@@ -19,8 +19,7 @@ def test_add():
 def test_substract():
     assert substract(8,3) == 5
 
-def test_divite():
-    assert divide(8,4) == 2
+def test_divite(): # jdkfaslhdlkjsahs
 
 print('yuhuu')
 
