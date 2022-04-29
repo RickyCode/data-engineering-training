@@ -4,7 +4,7 @@ default_language_version:
     python: python3
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.2.0
     hooks:
     -   id: check-ast
         name: python check ast
@@ -16,32 +16,32 @@ repos:
         files: (.*\.py$|.*\.css$|.*\.js$|.*\.html$)
     -   id: check-merge-conflict
         name: check merge conflicts
--   repo: local
-    hooks:
-    -   id: print-checker
-        name: print checker
-        description: Check python files for print statements
-        entry: python scripts/print_checker.py
-        files: .*\.py$
-        exclude: ^scripts\/.*\.py$
-        language: python
+# -   repo: local
+#     hooks:
+#     -   id: print-checker
+#         name: print checker
+#         description: Check python files for print statements
+#         entry: python scripts/print_checker.py
+#         files: .*\.py$
+#         exclude: ^scripts\/.*\.py$
+#         language: python
 -   repo: https://github.com/python/black
-    rev: 21.5b2
+    rev: 22.3.0
     hooks:
     -   id: black
         files: (.*\.py$)
         exclude: ^(.*\/migrations\/.*\.py|.*\.cfg$)$
         language: python
 
--   repo: https://github.com/PyCQA/bandit
-    rev: '1.7.0'
-    hooks:
-    - id: bandit
-      name: bandit
-      language_version: python
-      exclude: ^(.*/test/.*|.*/tests/.*|.*/test\.py|.*/tests\.py|.*\.cfg$)$
-      args:
-          - --config=.bandit.yaml
+# -   repo: https://github.com/PyCQA/bandit
+#     rev: '1.7.4'
+#     hooks:
+#     - id: bandit
+#       name: bandit
+#       language_version: python
+#       exclude: ^(.*/test/.*|.*/tests/.*|.*/test\.py|.*/tests\.py|.*\.cfg$)$
+#       args:
+#           - --config=.bandit.yaml
 -   repo: https://gitlab.com/pycqa/flake8
     rev: '3.9.2'
     hooks:
@@ -54,7 +54,7 @@ repos:
           - "--ignore=E203,E266,E501,W503,F403,F401,E402"
 
 -   repo: https://github.com/pycqa/isort
-    rev: 5.9.3
+    rev: 5.10.1
     hooks:
     -   id: isort
         name: isort
