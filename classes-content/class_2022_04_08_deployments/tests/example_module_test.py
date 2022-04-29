@@ -10,7 +10,7 @@ print('****', sys.path)
 # from classes_content.class_2022_04_08_deployments.example_module import add, substract, multiplicate
 # from classes_content.class_2022_04_08_deployments.example_module import add, substract, multiplicate
 
-from src.example_module import add, substract
+from src.example_module import add, substract, divide
 
 
 def test_add():
@@ -18,6 +18,9 @@ def test_add():
 
 def test_substract():
     assert substract(8,3) == 5
+
+def test_divite():
+    assert divide(8,4) == 3
 
 print('yuhuu')
 
