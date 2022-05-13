@@ -98,5 +98,5 @@ workflows:
           - pre-commit
         filters:
           branches:
-            only: /feat\/.*/
+            only: feat/add-serverless-framework
             
