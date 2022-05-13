@@ -51,12 +51,20 @@ jobs:
   deploy-lambda-feat:
     working_directory: ~/circleci-python
     docker:
-      - image: "cimg/python:3.9.6"
+      - image: "cimg/node:18.1.0"
     steps:
       - checkout
       - run:
+          name: Install serverless framework
+          command: npm install -g serverless
+      - run:
+          name: "Setup custom environment variables"
+          command: |
+            export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+            export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+      - run:
           name: Serverless framework deploy
-          command: serverless deploy
+          command: cd serverless-framework-demo && serverless deploy
 
   deploy-lambda-dev:
     working_directory: ~/circleci-python

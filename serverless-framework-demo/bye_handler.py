@@ -5,10 +5,9 @@ def add_group_name():
     return "data engineering training"
 
 
-def hello(event, context):
+def bye(event, context):
     body = {
-        "message": f"Go Serverless v3.0! Your function executed successfully! {add_group_name()}",
-        "event": event,
+        "message": f"Bye, good weekend {add_group_name()} team!",
     }
 
     response = {"statusCode": 200, "body": json.dumps(body)}

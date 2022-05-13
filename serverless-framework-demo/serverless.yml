@@ -12,3 +12,10 @@ functions:
       - httpApi:
           path: /
           method: get
+
+  bye:
+    handler: bye_handler.bye
+    events:
+      - httpApi:
+          path: /bye
+          method: get
