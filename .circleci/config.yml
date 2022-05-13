@@ -94,9 +94,9 @@ workflows:
     jobs:
       - pre-commit
       - deploy-lambda-feat
-        requires:
-          - pre-commit
-        filters:
-          branches:
-            only: feat/add-serverless-framework
+          requires:
+            - pre-commit
+          filters:
+            branches:
+              only: feat/add-serverless-framework
             
