@@ -93,7 +93,7 @@ workflows:
   serverless-dev-deploy:
     jobs:
       - pre-commit
-      - deploy-lambda-feat
+      - deploy-lambda-feat:
           requires:
             - pre-commit
           filters:
