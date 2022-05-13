@@ -48,6 +48,36 @@ jobs:
           command: |
             SKIP=no-commit-to-branch pre-commit run -a -v
 
+  deploy-lambda-feat:
+    working_directory: ~/circleci-python
+    docker:
+      - image: "cimg/python:3.9.6"
+    steps:
+      - checkout
+      - run:
+          name: Serverless framework deploy
+          command: serverless deploy
+
+  deploy-lambda-dev:
+    working_directory: ~/circleci-python
+    docker:
+      - image: "cimg/python:3.9.6"
+    steps:
+      - checkout
+      - run:
+          name: Serverless framework deploy
+          command: serverless deploy
+
+  deploy-lambda-prd:
+    working_directory: ~/circleci-python
+    docker:
+      - image: "cimg/python:3.9.6"
+    steps:
+      - checkout
+      - run:
+          name: Serverless framework deploy
+          command: serverless deploy
+
 
 workflows:
   build_and_test:
@@ -59,4 +89,14 @@ workflows:
       - pre-commit:
           requires:
             - test
+
+  serverless-dev-deploy:
+    jobs:
+      - pre-commit
+      - deploy-lambda-feat
+        requires:
+          - pre-commit
+        filters:
+          branches:
+            only: /feat\/.*/
             
