@@ -13,7 +13,8 @@ send-file-to-aws:
 	echo pending
 
 
-deploy-lambda-funciton:
+deploy-lambda:
+	cd serverless-framework-demo && serverless deploy
     
 
 deploy-emr:
