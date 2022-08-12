@@ -1,0 +1,21 @@
+service: serverless-framework-demo
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+  bye:
+    handler: bye_handler.bye
+    events:
+      - httpApi:
+          path: /bye
+          method: get

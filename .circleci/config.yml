@@ -48,6 +48,44 @@ jobs:
           command: |
             SKIP=no-commit-to-branch pre-commit run -a -v
 
+  deploy-lambda-feat:
+    working_directory: ~/circleci-python
+    docker:
+      - image: "cimg/node:18.1.0"
+    steps:
+      - checkout
+      - run:
+          name: Install serverless framework
+          command: npm install -g serverless
+      - run:
+          name: "Setup custom environment variables"
+          command: |
+            export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+            export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+      - run:
+          name: Serverless framework deploy
+          command: cd serverless-framework-demo && serverless deploy
+
+  deploy-lambda-dev:
+    working_directory: ~/circleci-python
+    docker:
+      - image: "cimg/python:3.9.6"
+    steps:
+      - checkout
+      - run:
+          name: Serverless framework deploy
+          command: serverless deploy
+
+  deploy-lambda-prd:
+    working_directory: ~/circleci-python
+    docker:
+      - image: "cimg/python:3.9.6"
+    steps:
+      - checkout
+      - run:
+          name: Serverless framework deploy
+          command: serverless deploy
+
 
 workflows:
   build_and_test:
@@ -59,4 +97,14 @@ workflows:
       - pre-commit:
           requires:
             - test
+
+  serverless-dev-deploy:
+    jobs:
+      - pre-commit
+      - deploy-lambda-feat:
+          requires:
+            - pre-commit
+          filters:
+            branches:
+              only: feat/add-serverless-framework
             
