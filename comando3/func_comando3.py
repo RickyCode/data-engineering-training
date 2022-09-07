@@ -12,15 +12,6 @@ from pyspark.sql.types import *
 spark=SparkSession.builder.appName('comando3').getOrCreate()
 
 
-# ## Load files
-
-dataframes_dict = { 
-                'facturas'            : spark.read.parquet('./datasets/bkpf_vbrk.parquet'), 
-                'facturas_x_clientes' : spark.read.parquet('./datasets/vbpa_kna1.parquet'),
-                'materiales'          : spark.read.parquet('./datasets/vbrp_mara_marm.parquet'),
-                'paises'              : spark.read.parquet('./datasets/T005T.parquet')
-                }
-
 
 # ### Select dataframes, filter and join
 
